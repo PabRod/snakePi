@@ -1,11 +1,4 @@
-DATS = ["results/run_00.txt",
-        "results/run_01.txt",
-        "results/run_02.txt",
-        "results/run_03.txt",
-        "results/run_04.txt",
-        "results/run_05.txt",
-        "results/run_06.txt",
-        "results/run_07.txt"]
+DATS = [f"results/run_0{i}.txt" for i in range(8)]
 
 # ================== Workflow ==================
 rule all:
