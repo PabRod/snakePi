@@ -42,5 +42,4 @@ rule clean:
     shell:
         """
         rm -rf results/
-        rm -f dag.svg
         """
