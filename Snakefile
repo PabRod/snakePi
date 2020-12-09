@@ -1,16 +1,18 @@
-# ================== Workflow ==================
-rule all:
-    input:
-        "results/run_00.txt",
+DATS = ["results/run_00.txt",
         "results/run_01.txt",
         "results/run_02.txt",
         "results/run_03.txt",
         "results/run_04.txt",
         "results/run_05.txt",
         "results/run_06.txt",
-        "results/run_07.txt"
+        "results/run_07.txt"]
 
-rule path:
+# ================== Workflow ==================
+rule all:
+    input:
+        DATS
+
+rule set_path:
     output:
         "results/.gitkeep"
     shell:
@@ -22,7 +24,8 @@ rule path:
 rule get_pi:
     input:
         script="process.py",
-        run="input/{file}.txt"
+        run="input/{file}.txt",
+        path="results/.gitkeep"
     output:
         "results/{file}.txt"
     shell:
@@ -38,8 +41,8 @@ rule clean:
 # Make dependency diagram
 rule diagram:
     output:
-        'dag.svg'
+        "dag.svg"
     shell:  
-        '''
+        """
         snakemake --forceall --dag | dot -Tsvg > {output}
-        '''
+        """
