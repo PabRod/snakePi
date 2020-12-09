@@ -22,11 +22,11 @@ def parser(file):
     """ Parses the simulation settings from file """
     # Our file is remarkably simple: it just contains one integer
     #
-    # The parser just extracts that number
+    # The parser just extracts that number ...
     val = open(file, 'r').read()
 
-    # and returns 10**val
-    return(10**int(val))
+    # ... and returns it as an integer
+    return(int(val))
 
 
 def writer(val, file):
