@@ -1,7 +1,14 @@
 # ================== Workflow ==================
 rule all:
     input:
-        "results/res.txt"
+        "results/run_00.txt",
+        "results/run_01.txt",
+        "results/run_02.txt",
+        "results/run_03.txt",
+        "results/run_04.txt",
+        "results/run_05.txt",
+        "results/run_06.txt",
+        "results/run_07.txt"
 
 rule path:
     output:
@@ -14,11 +21,12 @@ rule path:
 
 rule get_pi:
     input:
-        "input/run_00.txt"
+        script="process.py",
+        run="input/{file}.txt"
     output:
-        "results/res_00.txt"
+        "results/{file}.txt"
     shell:
-        "python process.py {input} {output}"
+        "python {input.script} {input.run} {output}"
 
 rule clean:
     shell:
