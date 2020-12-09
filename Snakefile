@@ -2,7 +2,7 @@
 
 # Generate the filenames of the desired output files
 # ["results/run_01.txt", "results/run_02.txt", ...]
-DATS = [f"results/run_0{i}.txt" for i in range(8)]
+DATS = expand("results/run_0{num}.txt", num = range(8))
 
 # ================== Workflow ==================
 rule gather:
