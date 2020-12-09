@@ -2,3 +2,4 @@
 .snakemake/
 input/.ipynb_checkpoints/
 results/
+__pycache__/
