@@ -29,13 +29,12 @@ rule set_path:
 # Process the files
 rule get_pi:
     input:
-        script="process.py",
         run="input/{file}.txt",
         path="results/.gitkeep"
     output:
         "results/{file}.txt"
-    shell:
-        "python {input.script} {input.run} {output}"
+    script:
+        "scripts/process.py"
 
 # Clean output
 rule clean:

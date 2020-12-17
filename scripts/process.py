@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import sys
 import random
 
@@ -37,14 +36,6 @@ def writer(val, file):
         f.write(val_str)
 
 
-if __name__ == '__main__':
-    """ Takes val from input file
-    and writes an estimation of pi 
-    using 10**val shots 
-    """
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
-
-    N = parser(input_file)
-    pi_approx = calc_pi(N)
-    writer(pi_approx, output_file)
+N = parser(snakemake.input['run'])
+pi_approx = calc_pi(N)
+writer(pi_approx, snakemake.output[0])
